@@ -3,21 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>sd-rescue — Recover deleted photos from a microSD. For free.</title>
-  <meta name="description" content="A free, open-source bash script that recovers deleted photos from a microSD card on macOS. One command. No paid software." />
-  <meta property="og:title" content="sd-rescue" />
-  <meta property="og:description" content="Recover deleted photos from a microSD. For free." />
+  <title>sd-rescue — Free Disk Drill alternative for macOS. Recover deleted photos from a microSD.</title>
+  <meta name="description" content="Free open-source bash script for macOS that recovers deleted photos from a microSD card. A no-cost alternative to Disk Drill, EaseUS and Stellar Photo Recovery. One command. JPG, PNG, TIFF, RAW (CR2, NEF, ARW, RAF). MIT licensed." />
+  <meta name="keywords" content="recover deleted photos sd card mac, free disk drill alternative, photorec macos, microsd recovery mac, sd card recovery free, undelete photos mac, recover photos from formatted sd card" />
+  <meta name="author" content="Oriol Chias" />
+  <link rel="canonical" href="https://ochias.github.io/sd-rescue/" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:title" content="sd-rescue — Free photo recovery for microSD on macOS" />
+  <meta property="og:description" content="A free, open-source bash script that recovers deleted photos from a microSD card on macOS. One command. No paid software." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ochias.github.io/sd-rescue/" />
   <meta property="og:image" content="https://ochias.github.io/sd-rescue/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="627" />
+  <meta property="og:image:alt" content="sd-rescue logo and tagline: Recover deleted photos from a microSD. For free." />
+  <meta property="og:site_name" content="sd-rescue" />
+
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="sd-rescue" />
-  <meta name="twitter:description" content="Recover deleted photos from a microSD. For free." />
+  <meta name="twitter:title" content="sd-rescue — Free photo recovery for microSD on macOS" />
+  <meta name="twitter:description" content="A free, open-source bash script that recovers deleted photos from a microSD card on macOS. One command. No paid software." />
   <meta name="twitter:image" content="https://ochias.github.io/sd-rescue/og-image.png" />
+
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📷</text></svg>" />
   <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "sd-rescue",
+    "description": "Free open-source bash script for macOS that recovers deleted photos from a microSD card. A no-cost alternative to Disk Drill.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "macOS",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "license": "https://opensource.org/licenses/MIT",
+    "url": "https://ochias.github.io/sd-rescue/",
+    "downloadUrl": "https://github.com/ochias/sd-rescue",
+    "softwareVersion": "1.0",
+    "author": {
+      "@type": "Person",
+      "name": "Oriol Chias",
+      "url": "https://github.com/ochias"
+    },
+    "codeRepository": "https://github.com/ochias/sd-rescue",
+    "programmingLanguage": "Bash"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is sd-rescue really free?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. sd-rescue is MIT-licensed open-source software. There is no paid tier, no upsell, no telemetry. Disk Drill charges roughly $99 to actually export recovered files; sd-rescue does the same job for free using PhotoRec under the hood." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work for camera RAW files?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. PhotoRec, the engine sd-rescue uses, supports CR2, CR3 (Canon), NEF (Nikon), ARW (Sony), RAF (Fuji), ORF (Olympus), DNG and many others. Inside the TUI you can filter to the RAW format your camera writes." }
+      },
+      {
+        "@type": "Question",
+        "name": "Will it work after I formatted the SD card?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Usually yes, as long as you haven't written new data to the card after the format. Quick formats only clear the file table; the actual photo bytes stay on the card until they are overwritten. Stop using the card immediately and run sd-rescue." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is sd-rescue safe? Does it write to the SD?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It only reads. Both dd (when imaging) and PhotoRec open the device read-only. Recovered files are written to a folder on your Mac that you choose, never back to the SD." }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <header class="nav">
@@ -26,6 +86,7 @@
       <nav>
         <a href="#what">what</a>
         <a href="#install">install</a>
+        <a href="#faq">faq</a>
         <a href="#donate">donate</a>
         <a href="https://github.com/ochias/sd-rescue" target="_blank" rel="noopener">github</a>
       </nav>
@@ -143,6 +204,47 @@ chmod +x recover-sd.sh</code></pre>
         </div>
 
         <p class="lede">Full docs in <a href="https://github.com/ochias/sd-rescue#readme" target="_blank" rel="noopener">README</a> (English &amp; Spanish).</p>
+      </div>
+    </section>
+
+    <section id="faq" class="install">
+      <div class="install-inner">
+        <h2>FAQ</h2>
+
+        <div class="step">
+          <h3>Is sd-rescue really free?</h3>
+          <p>Yes. MIT-licensed, no paid tier, no upsell, no telemetry. Disk Drill, EaseUS and Stellar Photo Recovery typically scan for free but charge ~$99 to actually export recovered files. sd-rescue does the same job — using <a href="https://www.cgsecurity.org/wiki/PhotoRec" target="_blank" rel="noopener">PhotoRec</a> under the hood — for free.</p>
+        </div>
+
+        <div class="step">
+          <h3>Does it work for camera RAW files?</h3>
+          <p>Yes. PhotoRec recovers <code>CR2</code>, <code>CR3</code> (Canon), <code>NEF</code> (Nikon), <code>ARW</code> (Sony), <code>RAF</code> (Fuji), <code>ORF</code> (Olympus), <code>DNG</code>, and many others. Inside the TUI, open <code>File Opt</code>, press <code>s</code> to deselect all, then enable only the formats your camera writes.</p>
+        </div>
+
+        <div class="step">
+          <h3>I formatted my SD card by mistake. Can I still recover photos?</h3>
+          <p>Usually yes — as long as you stop using the card immediately. Quick formats only clear the file allocation table; the actual photo bytes stay on the card until something else writes over them. Don't take new shots, don't copy anything to the card, and run sd-rescue.</p>
+        </div>
+
+        <div class="step">
+          <h3>Is it safe? Will it damage my SD card?</h3>
+          <p>No. Both <code>dd</code> (when imaging) and PhotoRec open the device <strong>read-only</strong>. The script never writes back to the SD. Recovered files are saved to a folder on your Mac that you choose.</p>
+        </div>
+
+        <div class="step">
+          <h3>How is this different from PhotoRec on its own?</h3>
+          <p>PhotoRec is the engine — sd-rescue is a guided wrapper for macOS. It installs the dependency, lists external disks, asks you to confirm the device twice (you really don't want to point recovery at the wrong drive), unmounts the SD, and either creates a <code>dd</code> image first or runs PhotoRec directly. Without it, the manual flow is doable but unfriendly.</p>
+        </div>
+
+        <div class="step">
+          <h3>Does it work on Windows or Linux?</h3>
+          <p>Not directly. The script uses macOS-specific commands (<code>diskutil</code>, <code>/dev/rdisk</code>). On Linux, just use PhotoRec directly via your package manager (<code>apt install testdisk</code>). On Windows, use <a href="https://www.cgsecurity.org/wiki/TestDisk_Download" target="_blank" rel="noopener">PhotoRec for Windows</a> or <a href="https://www.cgsecurity.org/wiki/PhotoRec_Step_By_Step" target="_blank" rel="noopener">QPhotoRec</a>.</p>
+        </div>
+
+        <div class="step">
+          <h3>What if the SD card has bad sectors / clicks / errors?</h3>
+          <p>If <code>dd</code> shows "Input/output error", the card is physically damaged. <code>dd</code> stops on errors; <a href="https://www.gnu.org/software/ddrescue/" target="_blank" rel="noopener"><code>ddrescue</code></a> retries failed reads and skips around damaged areas, so it's the right tool for that case. <a href="https://github.com/ochias/sd-rescue/issues" target="_blank" rel="noopener">Open an issue</a> if you'd like a <code>--ddrescue</code> flag.</p>
+        </div>
       </div>
     </section>
 
