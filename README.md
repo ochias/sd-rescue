@@ -5,7 +5,7 @@
 **Recover deleted photos from a microSD card on macOS — for free.**
 **Recupera fotos borradas de una tarjeta microSD en macOS — gratis.**
 
-[Website](https://vikomittum.github.io/sd-rescue/) ·
+[Website](https://ochias.github.io/sd-rescue/) ·
 [English](#english) ·
 [Castellano](#castellano)
 
@@ -35,7 +35,7 @@ PhotoRec is excellent but its CLI is unfriendly: you have to figure out the righ
 ### Install
 
 ```bash
-git clone https://github.com/vikomittum/sd-rescue.git
+git clone https://github.com/ochias/sd-rescue.git
 cd sd-rescue
 chmod +x recover-sd.sh
 ```
@@ -92,7 +92,7 @@ If `dd` shows read errors (clicking sounds, "Input/output error"), the card has 
 
 ### Donate
 
-If this saved you a Disk Drill license fee, you can [drop a few euros via PayPal](https://vikomittum.github.io/sd-rescue/#donate). No pressure.
+If this saved you a Disk Drill license fee, you can [drop a few euros via PayPal](https://ochias.github.io/sd-rescue/#donate). No pressure.
 
 ### License
 
@@ -122,7 +122,7 @@ PhotoRec es buenísimo pero su CLI es áspera: hay que averiguar qué dispositiv
 ### Instalación
 
 ```bash
-git clone https://github.com/vikomittum/sd-rescue.git
+git clone https://github.com/ochias/sd-rescue.git
 cd sd-rescue
 chmod +x recover-sd.sh
 ```
@@ -179,7 +179,7 @@ Si `dd` da errores de lectura (chasquidos, "Input/output error"), la tarjeta tie
 
 ### Donar
 
-Si esto te ha ahorrado la licencia de Disk Drill, puedes [dejar unos euros vía PayPal](https://vikomittum.github.io/sd-rescue/#donate). Sin presión.
+Si esto te ha ahorrado la licencia de Disk Drill, puedes [dejar unos euros vía PayPal](https://ochias.github.io/sd-rescue/#donate). Sin presión.
 
 ### Licencia
 
