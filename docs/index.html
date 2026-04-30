@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sd-rescue — Recover deleted photos from a microSD. For free.</title>
+  <meta name="description" content="A free, open-source bash script that recovers deleted photos from a microSD card on macOS. One command. No paid software." />
+  <meta property="og:title" content="sd-rescue" />
+  <meta property="og:description" content="Recover deleted photos from a microSD. For free." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📷</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="#" class="brand">sd-rescue</a>
+      <nav>
+        <a href="#what">what</a>
+        <a href="#install">install</a>
+        <a href="#donate">donate</a>
+        <a href="https://github.com/vikomittum/sd-rescue" target="_blank" rel="noopener">github</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>
+          Recover deleted photos<br />
+          from a microSD.<br />
+          <span class="accent">For free.</span>
+        </h1>
+        <p class="tagline">
+          A 90-line bash script that wraps PhotoRec into a guided flow.
+          No paid software. No cloud. No telemetry.
+        </p>
+
+        <div class="terminal" aria-label="Terminal example">
+          <div class="terminal-bar">
+            <span></span><span></span><span></span>
+            <span class="terminal-title">~ — recover-sd.sh</span>
+          </div>
+          <div class="terminal-body">
+            <p><span class="prompt">$</span> git clone https://github.com/vikomittum/sd-rescue.git</p>
+            <p><span class="prompt">$</span> cd sd-rescue</p>
+            <p><span class="prompt">$</span> ./recover-sd.sh --no-image ~/Downloads/recovered</p>
+            <p class="dim">→ Identifies the SD card</p>
+            <p class="dim">→ Confirms the device twice (safety)</p>
+            <p class="dim">→ Launches PhotoRec on the right target</p>
+            <p class="dim">→ Drops your photos into ~/Downloads/recovered</p>
+          </div>
+        </div>
+
+        <div class="cta">
+          <a href="https://github.com/vikomittum/sd-rescue" class="btn btn-primary" target="_blank" rel="noopener">Get it on GitHub</a>
+          <a href="#install" class="btn btn-ghost">How it works</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="what" class="features">
+      <div class="features-inner">
+        <div class="feature">
+          <div class="feature-icon">⌘</div>
+          <h3>One command</h3>
+          <p>No menus, no wizards. Run the script, confirm the device, watch your files come back.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">∅</div>
+          <h3>Zero cost</h3>
+          <p>Apps like Disk Drill charge $99+ to actually recover files. This is MIT-licensed, no upsells.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⊘</div>
+          <h3>Read-only</h3>
+          <p>The script never writes to your SD. Both <code>dd</code> and PhotoRec only read. The tool asks twice before touching the device.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⌥</div>
+          <h3>Two modes</h3>
+          <p>Standard creates a <code>dd</code> image first (safer, allows retries). <code>--no-image</code> reads the SD directly when you're tight on disk space.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⌖</div>
+          <h3>Photos only</h3>
+          <p>PhotoRec recovers everything by default. Inside the TUI, filter to JPG, PNG, TIFF, and RAW formats (CR2, NEF, ARW, RAF) so you don't drown in OS junk.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⌬</div>
+          <h3>Open source</h3>
+          <p>Single bash file. Read it before you run it — or fork it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="install" class="install">
+      <div class="install-inner">
+        <h2>Install &amp; run</h2>
+        <p class="lede">macOS only. You'll need <a href="https://brew.sh" target="_blank" rel="noopener">Homebrew</a> and a microSD reader.</p>
+
+        <div class="step">
+          <h3><span class="step-num">1</span> Clone</h3>
+          <pre><code>git clone https://github.com/vikomittum/sd-rescue.git
+cd sd-rescue
+chmod +x recover-sd.sh</code></pre>
+        </div>
+
+        <div class="step">
+          <h3><span class="step-num">2</span> Plug in your SD</h3>
+          <p>Insert the microSD card. macOS may show a "disk not readable" dialog — click <strong>Ignore</strong>. Don't initialize it.</p>
+        </div>
+
+        <div class="step">
+          <h3><span class="step-num">3</span> Run</h3>
+          <pre><code># Standard mode — creates a full image of the SD first.
+# Needs free disk space equal to the SD size.
+./recover-sd.sh ~/Downloads/recovered
+
+# Or no-image mode — reads the SD directly. No extra disk space.
+./recover-sd.sh --no-image ~/Downloads/recovered</code></pre>
+        </div>
+
+        <div class="step">
+          <h3><span class="step-num">4</span> Inside PhotoRec</h3>
+          <p>The script will print the exact buttons. Quick version:</p>
+          <ul>
+            <li>Partition: pick the only one shown, or <code>[Whole disk]</code></li>
+            <li>Filesystem type: <code>[Other]</code></li>
+            <li>Scope: <code>[Whole]</code> (scans deleted regions too)</li>
+            <li>Destination: navigate to your folder, press <code>C</code></li>
+          </ul>
+          <p>To filter only photos, open <code>File Opt</code> first, press <code>s</code> to deselect everything, then enable <code>jpg</code>, <code>tif</code>, <code>png</code>, and your camera's RAW format.</p>
+        </div>
+
+        <p class="lede">Full docs in <a href="https://github.com/vikomittum/sd-rescue#readme" target="_blank" rel="noopener">README</a> (English &amp; Spanish).</p>
+      </div>
+    </section>
+
+    <section id="donate" class="donate">
+      <div class="donate-inner">
+        <h2>Did this save you a Disk Drill license?</h2>
+        <p>This took an evening to write and saves people ~$99 every time it runs. If it worked for you, drop a few euros — it pays for the next side project.</p>
+        <button id="donate-btn" class="btn btn-primary">Donate via PayPal</button>
+        <p class="dim small">Opens PayPal in a new tab. No account required.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>MIT License</span>
+      <span>·</span>
+      <a href="https://github.com/vikomittum/sd-rescue" target="_blank" rel="noopener">github.com/vikomittum/sd-rescue</a>
+      <span>·</span>
+      <span>Built by <a href="https://github.com/vikomittum" target="_blank" rel="noopener">vikomittum</a></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

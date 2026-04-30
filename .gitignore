@@ -1,0 +1,5 @@
+.DS_Store
+*.dd
+*.dd.gz
+recovered_photos/
+recup_dir.*/
